@@ -1,0 +1,9 @@
+ .myCustomCardClass {
+        background-color: #db1616 ;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+ .myCustomCardClass h1 {
+        color: navy;
+  }

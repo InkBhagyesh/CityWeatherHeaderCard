@@ -1,0 +1,54 @@
+<mvc:View
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    width="100%"
+    controllerName="com.winslow.CityWeather.Card"
+>
+   <HBox class="sapUiTinyMargin" justifyContent="SpaceBetween" alignItems="Center" wrap="Wrap">
+    <!-- Left aligned group -->
+    <HBox alignItems="Center" wrap="Wrap">
+        <Image src="{/Image_1}" class="sapUiTinyMarginTop" width="45px" height="45px" />
+        <Text
+            id="weatherText"
+            text="{/selectedCityText}"
+            class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+        />
+        <ComboBox
+            id="citySelect"
+            class="sapUiTinyMarginTop"
+            selectedKey="Sunbury"
+            width="200px"
+            change="onCityChange"
+            items="{
+                path: '/cities',
+                sorter: {
+                    path: 'City',
+                    descending: false,
+                    group: true
+                }
+            }"
+        >
+            <core:Item key="{name}" text="{name}" />
+        </ComboBox>
+    </HBox>
+
+    <!-- Right aligned group -->
+    <HBox alignItems="Center" wrap="Wrap">
+        <!-- <Image src="{/Image_2}" class="sapUiTinyMarginTop" width="35px" height="35px" />
+        <Link
+            text="AVONDALE FC"
+            class="sapUiTinyMarginTop sapUiTinyMarginEnd"
+            href="https://avondalefc.com.au/media/news/"
+        /> -->
+        <!-- <Button icon="{/Image_2}" press="onPressButtonAF" text="AVONDALE FC" type="Transparent"></Button> -->
+        <Image src="{/Image_3}" width="150px" height="50px"  press="onPressButtonAF"></Image>
+        <Image src="{/Image_4}" width="150px" height="50px"  press="onPressWinslow"></Image>
+        <Image src="{/Image_5}" width="150px" height="50px" press="onPressHub"></Image>
+        <Image src="{/Image_6}" width="150px" height="50px" press="onPressLP"></Image>
+        <!-- <Button  class="myCustomCardClass" press="onPressLP" text="LEARNING PORTAL" type="Transparent"></Button> -->
+    </HBox>
+</HBox>
+
+</mvc:View>
