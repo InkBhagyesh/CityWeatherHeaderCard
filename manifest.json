@@ -32,7 +32,7 @@
 		"resources": {
                 "css": [
                     {
-                        "uri": "./style.css"
+                        "uri": "css/style.css"
                     }
                 ]
         },

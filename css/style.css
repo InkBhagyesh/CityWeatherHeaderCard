@@ -1,9 +1,46 @@
- .myCustomCardClass {
-        background-color: #db1616 ;
-        border: 1px solid #ccc;
-        padding: 10px;
+.image {
+    margin-left: 1%;
+}
+
+.customImageSize {
+    width: 150px !important;
+    height: 50px !important;
+    object-fit: contain !important;
+}
+
+.hoverBox {
+    background-color: white;
+    transition: 0.3s;
+    overflow: visible;
+    display: inline-block;
+}
+
+.zoomImg {
+    transition: transform 0.3s ease-in-out;
+    border-radius: 8px;
+}
+
+.hoverBox:hover .zoomImg {
+    transform: scale(1.15);
+}
+
+.allImages {
+    gap: 10px;
+}
+
+/* MOBILE — disable zoom */
+@media (max-width: 768px) {
+    .zoomImg {
+        transition: transform 0.3s ease-in-out;
+        border-radius: 8px;
     }
 
- .myCustomCardClass h1 {
-        color: navy;
-  }
+    .hoverBox:hover .zoomImg {
+        transform: none !important;
+    }
+
+    .allImages {
+        gap: 10px;
+        margin-top: 2%;
+    }
+}

@@ -8,47 +8,41 @@
 >
    <HBox class="sapUiTinyMargin" justifyContent="SpaceBetween" alignItems="Center" wrap="Wrap">
     <!-- Left aligned group -->
-    <HBox alignItems="Center" wrap="Wrap">
-        <Image src="{/Image_1}" class="sapUiTinyMarginTop" width="45px" height="45px" />
-        <Text
-            id="weatherText"
-            text="{/selectedCityText}"
-            class="sapUiTinyMarginTop sapUiTinyMarginEnd"
-        />
-        <ComboBox
-            id="citySelect"
-            class="sapUiTinyMarginTop"
-            selectedKey="Sunbury"
-            width="200px"
-            change="onCityChange"
-            items="{
-                path: '/cities',
-                sorter: {
-                    path: 'City',
-                    descending: false,
-                    group: true
-                }
-            }"
-        >
-            <core:Item key="{name}" text="{name}" />
-        </ComboBox>
-    </HBox>
+        <HBox alignItems="Center" wrap="Wrap" id="idWeatherBox">
+
+            <!-- Weather Icon -->
+            <Image src="{/weatherIconUrl}" width="30px" height="30px"/>
+
+            <Text id="weatherText" text="{/selectedCityText}" class="sapUiTinyMarginTop sapUiTinyMarginEnd sapUiTinyMarginBegin" />
+
+            <!-- City Selector -->
+            <ComboBox id="citySelect" width="200px" class="sapUiTinyMarginTop" selectedKey="Sunbury" items="{path: '/cities',sorter: {path: 'City',descending: false,group: true}}" selectionChange="onCityChange">
+                <core:Item key="{name}" text="{name}" />
+            </ComboBox>
+
+        </HBox>
 
     <!-- Right aligned group -->
-    <HBox alignItems="Center" wrap="Wrap">
-        <!-- <Image src="{/Image_2}" class="sapUiTinyMarginTop" width="35px" height="35px" />
-        <Link
-            text="AVONDALE FC"
-            class="sapUiTinyMarginTop sapUiTinyMarginEnd"
-            href="https://avondalefc.com.au/media/news/"
-        /> -->
-        <!-- <Button icon="{/Image_2}" press="onPressButtonAF" text="AVONDALE FC" type="Transparent"></Button> -->
-        <Image src="{/Image_3}" width="150px" height="50px"  press="onPressButtonAF"></Image>
-        <Image src="{/Image_4}" width="150px" height="50px"  press="onPressWinslow"></Image>
-        <Image src="{/Image_5}" width="150px" height="50px" press="onPressHub"></Image>
-        <Image src="{/Image_6}" width="150px" height="50px" press="onPressLP"></Image>
-        <!-- <Button  class="myCustomCardClass" press="onPressLP" text="LEARNING PORTAL" type="Transparent"></Button> -->
-    </HBox>
+    <HBox alignItems="Center" class="allImages" wrap="Wrap">
+    
+    <VBox class="hoverBox">
+        <Image class="zoomImg" src="{/Image_3}" width="150px" height="50px" press="onPressButtonAF"/>
+    </VBox>
+
+    <VBox class="hoverBox">
+        <Image class="zoomImg" src="{/Image_4}" width="150px" height="50px" press="onPressWinslow"/>
+    </VBox>
+
+    <VBox class="hoverBox">
+        <Image class="zoomImg" src="{/Image_5}" width="150px" height="50px" press="onPressHub"/>
+    </VBox>
+
+    <VBox class="hoverBox">
+        <Image class="zoomImg" src="{/Image_6}" width="150px" height="50px" press="onPressLP"/>
+    </VBox>
+
+</HBox>
+
 </HBox>
 
 </mvc:View>
