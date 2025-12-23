@@ -65,10 +65,10 @@ sap.ui.define([
             var oData = {
                 // Image_1: sap.ui.require.toUrl(cardId + "/images") + "/cloud.png",
                 // Image_2: sap.ui.require.toUrl(cardId + "/images") + "/download.png",
-                Image_3: sap.ui.require.toUrl(cardId + "/images") + "/AvondaleFc.png",
-                Image_4: sap.ui.require.toUrl(cardId + "/images") + "/MyHub.png",
-                Image_5: sap.ui.require.toUrl(cardId + "/images") + "/Winslow.png",
-                Image_6: sap.ui.require.toUrl(cardId + "/images") + "/LEP2.png",
+                Image_3: sap.ui.require.toUrl(cardId + "/images") + "/avondale_bt.png",
+                Image_4: sap.ui.require.toUrl(cardId + "/images") + "/myhub_bt.png",
+                Image_5: sap.ui.require.toUrl(cardId + "/images") + "/winslow_bt.png",
+                Image_6: sap.ui.require.toUrl(cardId + "/images") + "/learning_portal_bt.png",
                 cities: [
                     { name: "Sunbury", City: "VIC", latitude: "-37.5788", longitude: "144.7116", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Melton", City: "VIC", latitude: "-37.6834", longitude: "144.5854", current: "temperature_2m,weather_code", forecast_days: "1" },
@@ -120,7 +120,6 @@ sap.ui.define([
         },
 
         onCityChange: function (oEvent) {
-            debugger;
             var sSelectedCity = oEvent ? oEvent.getSource().getSelectedKey() : this.byId("citySelect").getSelectedKey();
             var oModel = this.getView().getModel();
             var aCities = oModel.getProperty("/cities");
@@ -145,7 +144,6 @@ sap.ui.define([
                     forecast_days: oCity.forecast_days
                 },
                 success: function (oData) {
-                    debugger;
                     var fTemp = oData.current.temperature_2m;
                     var sUnit = oData.current_units.temperature_2m;
                     var iWmoCode = oData.current.weather_code;

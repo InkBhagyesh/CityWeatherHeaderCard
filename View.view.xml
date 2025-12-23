@@ -5,8 +5,9 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     width="100%"
     controllerName="com.winslow.CityWeather.Card"
+    busyIndicatorDelay="0"
 >
-   <HBox class="sapUiTinyMargin" justifyContent="SpaceBetween" alignItems="Center" wrap="Wrap">
+   <HBox class="sapUiTinyMargin" alignContent="Center" justifyContent="SpaceBetween" alignItems="Center" wrap="Wrap">
     <!-- Left aligned group -->
         <HBox alignItems="Center" wrap="Wrap" id="idWeatherBox">
 
@@ -23,7 +24,7 @@
         </HBox>
 
     <!-- Right aligned group -->
-    <HBox alignItems="Center" class="allImages" wrap="Wrap">
+    <HBox alignItems="Center" justifyContent="Center" alignContent="Center" class="allImages" wrap="Wrap">
     
     <VBox class="hoverBox">
         <Image class="zoomImg" src="{/Image_3}" width="150px" height="50px" press="onPressButtonAF"/>
