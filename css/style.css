@@ -1,58 +1,38 @@
 /* ===========================
-   CENTER CONTAINER
-=========================== */
-.centerContainer {
-    text-align: center;
-}
-
-/* ===========================
-   WEATHER ROW
-=========================== */
-.weatherRow > * {
-    margin: 4px 6px;
-}
-
-/* ===========================
    IMAGE CONTAINER
 =========================== */
-/* .allImages {
-    margin-top: 6px;
-} */
+.allImages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 16px !important;
+}
 
+/* Space around each image box */
 .allImages > .hoverBox {
-    margin: 5px;
+    margin: 8px;                 /* MORE space for scale */
+    transition: transform 0.3s ease-in-out;
 }
 
-/* ===========================
-   IMAGE STYLE
-=========================== */
-.hoverBox {
-    background-color: #ffffff;
-    display: inline-block;
-}
-
+/* Image style */
 .zoomImg {
     width: 150px !important;
     height: 50px !important;
     object-fit: contain;
     border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
 }
 
-/* Hover zoom */
-.hoverBox:hover .zoomImg {
-    transform: scale(1.15);
+/* Hover zoom – SCALE THE BOX */
+.hoverBox:hover {
+    transform: scale(1.1);
+    z-index: 2;                  /* prevent overlap */
 }
 
 /* ===========================
    MOBILE FIX
 =========================== */
 @media (max-width: 768px) {
-    .hoverBox:hover .zoomImg {
+    .hoverBox:hover {
         transform: none !important;
-    }
-
-    .allImages {
-        margin-top: 10px;
     }
 }
