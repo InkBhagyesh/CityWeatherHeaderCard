@@ -1,46 +1,58 @@
-.image {
-    margin-left: 1%;
+/* ===========================
+   CENTER CONTAINER
+=========================== */
+.centerContainer {
+    text-align: center;
 }
 
-.customImageSize {
-    width: 150px !important;
-    height: 50px !important;
-    object-fit: contain !important;
+/* ===========================
+   WEATHER ROW
+=========================== */
+.weatherRow > * {
+    margin: 4px 6px;
 }
 
+/* ===========================
+   IMAGE CONTAINER
+=========================== */
+/* .allImages {
+    margin-top: 6px;
+} */
+
+.allImages > .hoverBox {
+    margin: 5px;
+}
+
+/* ===========================
+   IMAGE STYLE
+=========================== */
 .hoverBox {
-    background-color: white;
-    transition: 0.3s;
-    overflow: visible;
+    background-color: #ffffff;
     display: inline-block;
 }
 
 .zoomImg {
-    transition: transform 0.3s ease-in-out;
+    width: 150px !important;
+    height: 50px !important;
+    object-fit: contain;
     border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Hover zoom */
 .hoverBox:hover .zoomImg {
     transform: scale(1.15);
 }
 
-.allImages {
-    gap: 10px;
-}
-
-/* MOBILE — disable zoom */
+/* ===========================
+   MOBILE FIX
+=========================== */
 @media (max-width: 768px) {
-    .zoomImg {
-        transition: transform 0.3s ease-in-out;
-        border-radius: 8px;
-    }
-
     .hoverBox:hover .zoomImg {
         transform: none !important;
     }
 
     .allImages {
-        gap: 10px;
-        margin-top: 2%;
+        margin-top: 10px;
     }
 }
