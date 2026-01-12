@@ -29,12 +29,7 @@
             text="{/selectedCityText}"
             class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
 
-        <ComboBox
-            id="citySelect"
-            width="200px"
-            selectedKey="Sunbury"
-            items="{path: '/cities', sorter: {path: 'City', descending: false}}"
-            selectionChange="onCityChange">
+        <ComboBox id="citySelect" width="200px" selectedKey="Sunbury" items="{path: '/cities', sorter: {path: 'City', descending: false,group: true}}" selectionChange="onCityChange">
             <core:Item key="{name}" text="{name}" />
         </ComboBox>
 
