@@ -1,66 +1,46 @@
 <mvc:View
-    xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml"
     width="100%"
     controllerName="com.winslow.CityWeather.Card"
     busyIndicatorDelay="0"
 >
-   <HBox
-    width="100%"
-    justifyContent="SpaceBetween"
-    alignItems="Center"
-    wrap="Wrap"
-    class="centerContainer sapUiTinyMargin">
-
-    <!-- Weather + City -->
-    <HBox
-        id="idWeatherBox"
-        wrap="Wrap"
-        justifyContent="Center"
-        alignItems="Center"
-        class="weatherRow">
-
-        <Image src="{/weatherIconUrl}" width="30px" height="30px"/>
-
-        <Text
-            id="weatherText"
-            text="{/selectedCityText}"
-            class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
-
-        <ComboBox id="citySelect" width="200px" selectedKey="Sunbury" items="{path: '/cities', sorter: {path: 'City', descending: false,group: true}}" selectionChange="onCityChange">
-            <core:Item key="{name}" text="{name}" />
-        </ComboBox>
-
-    </HBox>
-
-    <!-- Images -->
-    <HBox
+	<HBox width="100%" justifyContent="SpaceBetween" alignItems="Center" wrap="Wrap" class="centerContainer sapUiTinyMargin">
+		<!-- Weather + City -->
+		<VBox id="idWeatherBox" alignItems="Start" justifyContent="Center" class="weatherRow">
+			<!-- ComboBox on TOP -->
+			<ComboBox id="citySelect" width="200px" selectedKey="Sunbury" items="{path: '/cities',sorter: {path: 'City',descending: false,group: true}}" selectionChange="onCityChange">
+				<core:Item key="{name}" text="{name}" />
+			</ComboBox>
+			<!-- Image + Text BELOW -->
+			<HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTop">
+				<Image src="{/weatherIconUrl}" width="30px" height="30px" />
+				<Text id="weatherText" text="{/selectedCityText}" class="sapUiTinyMarginBegin" />
+			</HBox>
+		</VBox>
+		<!-- Images -->
+		<HBox
         class="allImages"
         wrap="Wrap"
         justifyContent="Center"
         alignItems="Center">
-
-        <VBox class="hoverBox">
-            <Image class="zoomImg" src="{/Image_3}" width="150px" height="50px" press="onPressButtonAF"/>
-        </VBox>
-
-        <VBox class="hoverBox">
-            <Image class="zoomImg" src="{/Image_4}" width="150px" height="50px" press="onPressHub"/>
-        </VBox>
-
-        <VBox class="hoverBox">
-            <Image class="zoomImg" src="{/Image_5}" width="150px" height="50px" press="onPressWinslow"/>
-        </VBox>
-
-        <VBox class="hoverBox">
-            <Image class="zoomImg" src="{/Image_6}" width="150px" height="50px" press="onPressLP"/>
-        </VBox>
-
-    </HBox>
-
-</HBox>
-
-
+			<VBox class="hoverBox">
+				<Image class="zoomImg" src="{/Image_3}" width="100px" height="50px" press="onPressButtonAF"/>
+			</VBox>
+			<VBox class="hoverBox">
+				<Image class="zoomImg" src="{/Image_4}" width="100px" height="50px" press="onPressHub"/>
+			</VBox>
+			<VBox class="hoverBox">
+				<Image class="zoomImg" src="{/Image_5}" width="100px" height="50px" press="onPressWinslow"/>
+			</VBox>
+			<VBox class="hoverBox">
+				<Image class="zoomImg" src="{/Image_7}" width="100px" height="50px" press="onPressBrandFolder"/>
+			</VBox>
+			<VBox class="hoverBox">
+				<Image class="zoomImg" src="{/Image_6}" width="100px" height="50px" press="onPressLP"/>
+			</VBox>
+		</HBox>
+	</HBox>
 </mvc:View>
