@@ -47,11 +47,11 @@
         </VBox>
 
         <VBox class="hoverBox">
-            <Image class="zoomImg" src="{/Image_4}" width="150px" height="50px" press="onPressWinslow"/>
+            <Image class="zoomImg" src="{/Image_4}" width="150px" height="50px" press="onPressHub"/>
         </VBox>
 
         <VBox class="hoverBox">
-            <Image class="zoomImg" src="{/Image_5}" width="150px" height="50px" press="onPressHub"/>
+            <Image class="zoomImg" src="{/Image_5}" width="150px" height="50px" press="onPressWinslow"/>
         </VBox>
 
         <VBox class="hoverBox">
