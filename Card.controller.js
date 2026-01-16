@@ -50,7 +50,7 @@ sap.ui.define([
                 case 73:
                 case 75:
                     sDescription = "Snowing";
-                    sIcon =sap.ui.require.toUrl(cardId + "/images") + "/Snow.png"
+                    sIcon = sap.ui.require.toUrl(cardId + "/images") + "/Snow.png"
                     break;
             }
 
@@ -78,7 +78,7 @@ sap.ui.define([
                     { name: "Cranbourne", City: "VIC", latitude: "-38.1134", longitude: "145.2833", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Geelong", City: "VIC", latitude: "-38.1471", longitude: "144.3607", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Ballarat", City: "VIC", latitude: "-37.5662", longitude: "143.8496", current: "temperature_2m,weather_code", forecast_days: "1" },
-                    { name: "Sween Hill", City: "VIC", latitude: "-35.3378", longitude: "143.5544", current: "temperature_2m,weather_code", forecast_days: "1" },
+                    { name: "Swan Hill", City: "VIC", latitude: "-35.3378", longitude: "143.5544", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Hamilton", City: "VIC", latitude: "-37.7420", longitude: "142.0217", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Daylesford", City: "VIC", latitude: "-37.3411", longitude: "144.1426", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Warragul", City: "VIC", latitude: "-38.1591", longitude: "145.9312", current: "temperature_2m,weather_code", forecast_days: "1" },
@@ -106,7 +106,7 @@ sap.ui.define([
                     { name: "Ripley", City: "QLD", latitude: "-27.6679", longitude: "152.7835", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Walloon", City: "QLD", latitude: "-27.6055", longitude: "152.6643", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Rocklea", City: "QLD", latitude: "-27.5392", longitude: "153.004", current: "temperature_2m,weather_code", forecast_days: "1" },
-                    { name: "Eight Mile Plains", City: "QLD", latitude: "-27.5833", longitude: "153.1", current: "temperature_2m,weather_code", forecast_days: "1"},
+                    { name: "Eight Mile Plains", City: "QLD", latitude: "-27.5833", longitude: "153.1", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Samford", City: "QLD", latitude: "-27.3727", longitude: "152.8865", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "North Lakes", City: "QLD", latitude: "-27.2243", longitude: "153.0207", current: "temperature_2m,weather_code", forecast_days: "1" },
                     { name: "Burpengay", City: "QLD", latitude: "-27.1575", longitude: "152.9576", current: "temperature_2m,weather_code", forecast_days: "1" },
@@ -152,7 +152,7 @@ sap.ui.define([
                     var oWeather = this._getWmoData(iWmoCode);
 
                     var sTempText = fTemp.toFixed(1) + " " + sUnit;
-                    oModel.setProperty("/selectedCityText",sTempText + ", " + oWeather.description + " in " + sSelectedCity);
+                    oModel.setProperty("/selectedCityText", sTempText + ", " + oWeather.description + " in " + sSelectedCity);
                     oModel.setProperty("/weatherIconUrl", oWeather.iconUrl);
                     this.byId("idWeatherBox").setBusy(false);
                 }.bind(this),
@@ -174,8 +174,47 @@ sap.ui.define([
         onPressLP: function () {
             sap.m.URLHelper.redirect("https://www.winslow.com.au/login", true)
         },
-        onPressBrandFolder:function(){
-            sap.m.URLHelper.redirect("https://www.winslow.com.au/login", true)
-        }
+
+        onPressBrandFolder: function () {
+            debugger;
+            const oView = this.getView();
+            oView.setBusy(true);
+
+            var displayText = "Brandfolder"
+
+            const grpID = this.getView().getModel("HolidayGroupIdModel").getProperty("/GroupId");
+            if (!grpID) {
+                oView.setBusy(false);
+                return MessageToast.show("Group ID of Forms & Procedures not found");
+            }
+            this.getOwnerComponent().getModel("JAM").read(`/Search`, {
+                urlParameters: {
+                    "Query": "'" + displayText + "'",
+                    "Group": "'" + grpID + "'",
+                    "Category": "'workpages'",
+                    "$expand": "ObjectReference",
+                    "$select": "ObjectReference/Title,ObjectReference/WebURL,ObjectReference/Type",
+                },
+                success: function (oData) {
+                    debugger
+                    var oFoundItem = oData.results.find(function (item) {
+                        var sTitle = item.ObjectReference.Title || "";
+                        var sType = item.ObjectReference.Type || "";
+                        return sTitle.toLowerCase().trim() === displayText.toLowerCase().trim() && sType === "NavTab";
+                    });
+                    if (oFoundItem) {
+                        window.location.href = oFoundItem.ObjectReference.WebURL + "?headless=true&title=" + encodeURIComponent(displayText);
+                    } else {
+                        MessageToast.show("No item found with Title '" + displayText + "' and Type 'NavTab'.");
+                    }
+                    oView.setBusy(false);
+                }.bind(this),
+                error: function (oError) {
+                    MessageToast.show("Error fetching NavTabs, check console logs for more details");
+                    console.log(oError);
+                    oView.setBusy(false);
+                }
+            });
+        },
     });
 });

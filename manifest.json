@@ -11,7 +11,11 @@
 	},
 	"sap.ui": {
 		"technology": "UI5",
-        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"deviceTypes": {
+			"desktop": true,
+			"phone": true,
+			"tablet": true
+		},
 		"icons": {
 			"icon": "sap-icon://bus-public-transport"
 		}
@@ -30,12 +34,12 @@
 			}
 		},
 		"resources": {
-                "css": [
-                    {
-                        "uri": "css/style.css"
-                    }
-                ]
-        },
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
 		"config": {
 			"sample": {
 				"stretch": true,
@@ -47,22 +51,40 @@
 	},
 	"sap.card": {
 		"type": "Component",
-        "designtime": "dt/configuration",
+		"designtime": "dt/configuration",
+		"configuration": {
+			"parameters": {
+				"GroupId": {
+					"type": "string",
+					"label": "Group ID"
+				}
+			},
+			"destinations": {
+				"JAM": {
+					"name": "JAM",
+					"label": "BTP JAM Destination"
+				},
+				"BMSPortal_API": {
+					"name": "BMSPortal_API",
+					"label": "BTP CAP Destination"
+				}
+			}
+		},
 		"header": {
 			"icon": {
 				"src": "sap-icon://bus-public-transport"
 			},
 			"title": "Buy your bus ticket online",
 			"subTitle": "You’ll receive an email with a QR code. No need to print!",
-			"visible":false
+			"visible": false
 		},
 		"content": {
-            "componentContent": {
-                    "componentName": "com.winslow.CityWeather"
-                }
-        }
+			"componentContent": {
+				"componentName": "com.winslow.CityWeather"
+			}
+		}
 	},
-    "sap.platform.mobilecards": {
-        "compatible": true
-    }
+	"sap.platform.mobilecards": {
+		"compatible": true
+	}
 }
